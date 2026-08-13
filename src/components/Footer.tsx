@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
+import { services } from "@/lib/services";
 
 export function Footer() {
   return (
@@ -66,11 +67,13 @@ export function Footer() {
           <div>
             <h4 className="mb-5 border-b border-amber/40 pb-2 text-lg font-bold text-white">Our Services</h4>
             <ul className="space-y-3">
-              <li><a href="/services" className="footer-link"><i className="fa-solid fa-chevron-right text-xs text-amber"></i>Car Recovery Sharjah</a></li>
-              <li><a href="/services" className="footer-link"><i className="fa-solid fa-chevron-right text-xs text-amber"></i>Towing Service Sharjah</a></li>
-              <li><a href="/services" className="footer-link"><i className="fa-solid fa-chevron-right text-xs text-amber"></i>Emergency Towing Sharjah</a></li>
-              <li><a href="/services" className="footer-link"><i className="fa-solid fa-chevron-right text-xs text-amber"></i>Accident Recovery Sharjah</a></li>
-              <li><a href="/services" className="footer-link"><i className="fa-solid fa-chevron-right text-xs text-amber"></i>Roadside Assistance Sharjah</a></li>
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link href={`/services/${service.slug}`} className="footer-link">
+                    <i className="fa-solid fa-chevron-right text-xs text-amber"></i>{service.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

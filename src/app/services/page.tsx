@@ -1,124 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
     "Car recovery, towing, 24 hour car recovery, emergency towing, roadside assistance, breakdown recovery, flatbed towing, accident recovery and vehicle towing across Sharjah.",
 };
-
-const services = [
-  {
-    icon: "fa-solid fa-truck-pickup",
-    img: "/images/service-car-recovery.jpg",
-    title: "Car Recovery Sharjah",
-    titleAr: "استرجاع السيارات في الشارقة",
-    desc: "Fast, careful recovery for any car that can't be driven, wherever you are in Sharjah.",
-    features: [
-      "Rapid dispatch across the emirate",
-      "Suitable for cars, SUVs and light vehicles",
-      "Transport to a garage, home or storage yard",
-    ],
-  },
-  {
-    icon: "fa-solid fa-truck-ramp-box",
-    img: "/images/service-towing.jpg",
-    title: "Towing Service Sharjah",
-    titleAr: "خدمة سحب السيارات في الشارقة",
-    desc: "Reliable towing to your garage, home or preferred location, handled with care from hook-up to drop-off.",
-    features: [
-      "Modern towing fleet across Sharjah",
-      "Secure hook-up and steady transport",
-      "Flexible drop-off locations",
-    ],
-  },
-  {
-    icon: "fa-solid fa-clock",
-    img: "/images/service-24hr.png",
-    title: "24 Hour Car Recovery Sharjah",
-    titleAr: "استرجاع سيارات على مدار 24 ساعة",
-    desc: "Day or night, our team is on call around the clock to reach drivers stuck anywhere in the city.",
-    features: [
-      "Available every hour, every day of the year",
-      "Priority given to urgent night-time calls",
-      "No office hours — we're always reachable",
-    ],
-  },
-  {
-    icon: "fa-solid fa-triangle-exclamation",
-    img: "/images/service-emergency-towing.jpg",
-    title: "Emergency Towing Sharjah",
-    titleAr: "سحب طوارئ في الشارقة",
-    desc: "Rapid response towing for urgent situations, so you're not left waiting on a busy or unsafe road.",
-    features: [
-      "Fastest available dispatch for urgent calls",
-      "Safe recovery on highways and busy roads",
-      "Clear updates while help is on the way",
-    ],
-  },
-  {
-    icon: "fa-solid fa-road",
-    img: "/images/service-roadside-assistance.jpg",
-    title: "Roadside Assistance Sharjah",
-    titleAr: "المساعدة على الطريق في الشارقة",
-    desc: "On-the-spot help for minor issues so you can often get back on the road without a full tow.",
-    features: [
-      "Quick on-site checks where possible",
-      "Help with flat batteries, fuel and minor faults",
-      "Full recovery arranged if it can't be fixed roadside",
-    ],
-  },
-  {
-    icon: "fa-solid fa-car-burst",
-    img: "/images/service-breakdown-recovery.jpg",
-    title: "Breakdown Recovery Sharjah",
-    titleAr: "استرجاع سيارات الأعطال في الشارقة",
-    desc: "Whatever's stopped your car — engine trouble, a flat tyre or an electrical fault — we'll get it moved safely.",
-    features: [
-      "Covers mechanical and electrical breakdowns",
-      "Safe recovery from any Sharjah road",
-      "Transport to your preferred garage",
-    ],
-  },
-  {
-    icon: "fa-solid fa-trailer",
-    img: "/images/service-flatbed-towing.jpg",
-    title: "Flatbed Towing Sharjah",
-    titleAr: "سحب بشاحنة مسطحة في الشارقة",
-    desc: "Flatbed transport that keeps all four wheels off the road, ideal for low cars, 4x4s and damaged vehicles.",
-    features: [
-      "No wheels touch the ground during transport",
-      "Best option for lowered cars and 4x4s",
-      "Secure strapping for damaged or non-runners",
-    ],
-  },
-  {
-    icon: "fa-solid fa-car-side",
-    img: "/images/service-accident-recovery.jpg",
-    title: "Accident Recovery Sharjah",
-    titleAr: "استرجاع سيارات الحوادث في الشارقة",
-    desc: "Considerate, professional recovery from the scene of a collision, with support for the paperwork after.",
-    features: [
-      "Sensitive handling at the accident scene",
-      "Coordination with police or insurers on request",
-      "Transport to a body shop or storage compound",
-    ],
-  },
-  {
-    icon: "fa-solid fa-truck",
-    img: "/images/service-vehicle-towing.jpg",
-    title: "Vehicle Towing Sharjah",
-    titleAr: "سحب المركبات في الشارقة",
-    desc: "General vehicle towing for cars, vans and light commercial vehicles anywhere across Sharjah.",
-    features: [
-      "Cars, vans and light commercial vehicles",
-      "Local and cross-town towing",
-      "Fair, distance-based pricing",
-    ],
-  },
-];
 
 const process = [
   {
@@ -213,13 +104,17 @@ export default function ServicesPage() {
             </div>
             <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
               {services.map((service) => (
-                <article key={service.title} className="svc-card reveal flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white">
-                  <Image src={service.img} alt={service.title} width={900} height={600} className="h-48 w-full object-cover" />
+                <article key={service.slug} className="svc-card reveal flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white">
+                  <Link href={`/services/${service.slug}`}>
+                    <Image src={service.img} alt={service.title} width={900} height={600} className="h-48 w-full object-cover" />
+                  </Link>
                   <div className="flex flex-1 flex-col p-6">
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-amber/10">
                       <i className={`${service.icon} text-xl text-amber-dark`}></i>
                     </div>
-                    <h3 className="mb-1 text-xl font-bold text-ink">{service.title}</h3>
+                    <Link href={`/services/${service.slug}`} className="mb-1 text-xl font-bold text-ink transition hover:text-amber-dark">
+                      {service.title}
+                    </Link>
                     <p className="ar mb-2 text-sm text-ink/60">{service.titleAr}</p>
                     <p className="mb-4 text-ink/70">{service.desc}</p>
                     <ul className="mb-6 flex-1 space-y-2">
@@ -230,6 +125,12 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="mb-3 text-sm font-bold text-amber-dark transition hover:text-ink"
+                    >
+                      Learn More <i className="fa-solid fa-arrow-right ml-1"></i>
+                    </Link>
                     <div className="mt-auto flex gap-3">
                       <a
                         href="tel:+971502424637"

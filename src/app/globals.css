@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #101826;
+  --color-ink-light: #1b2740;
+  --color-amber: #f5a524;
+  --color-amber-dark: #d6870f;
+  --color-whatsapp: #25d366;
+  --font-heading: var(--font-poppins);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-poppins), var(--font-inter), Arial, sans-serif;
+}
+
+.wrap {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+}
+
+.ar {
+  direction: rtl;
+  font-family: "Tahoma", var(--font-inter), Arial, sans-serif;
+}
+
+/* ── Buttons ── */
+.btn-pulse:hover {
+  box-shadow: 0 0 20px rgba(245, 165, 36, 0.55);
+}
+
+/* ── Reveal-on-scroll animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero background ── */
+.hero-panel {
+  background: linear-gradient(120deg, rgba(16, 24, 38, 0.94), rgba(16, 24, 38, 0.78)),
+    url("/images/service-roadside-assistance.jpg") center/cover no-repeat;
+}
+
+/* ── CTA background (no fixed on mobile) ── */
+.cta-panel {
+  background: linear-gradient(rgba(16, 24, 38, 0.88), rgba(16, 24, 38, 0.88)),
+    url("/images/cta-bg.jpg") center/cover no-repeat;
+}
+@media (min-width: 768px) and (hover: hover) {
+  .cta-panel {
+    background-attachment: fixed;
+  }
+}
+
+/* ── Service cards (light) ── */
+.svc-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.svc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 44px rgba(16, 24, 38, 0.16);
+  border-color: rgba(245, 165, 36, 0.5);
+}
+
+/* ── Dark service cards ── */
+.svc-card-dark {
+  background: #182338;
+  border: 1px solid rgba(245, 165, 36, 0.22);
+  transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  border-radius: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.svc-card-dark::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(45deg, transparent 50%, rgba(245, 165, 36, 0.16) 50%);
+}
+.svc-card-dark:hover {
+  transform: translateY(-10px);
+  background: #101826;
+  border-color: rgba(245, 165, 36, 0.5);
+  box-shadow: 0 26px 54px rgba(0, 0, 0, 0.38);
+}
+
+/* ── Strip icon cards ── */
+.strip-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(245, 165, 36, 0.22);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  padding: 1.4rem 1rem;
+}
+.strip-card:hover {
+  background: rgba(245, 165, 36, 0.12);
+  border-color: rgba(245, 165, 36, 0.4);
+  transform: translateY(-5px);
+}
+
+/* ── Dark feature cards (Why Us) ── */
+.feature-card-dark {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(245, 165, 36, 0.22);
+  border-radius: 1.25rem;
+  transition: all 0.3s ease;
+}
+.feature-card-dark:hover {
+  background: rgba(245, 165, 36, 0.12);
+  border-color: rgba(245, 165, 36, 0.4);
+  transform: translateY(-6px);
+}
+
+/* ── Reviews slider ── */
+.reviews-track {
+  display: flex;
+  animation: reviewsScroll 34s linear infinite;
+  width: max-content;
+}
+@keyframes reviewsScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Ticker strip ── */
+.ticker-wrap {
+  background: linear-gradient(90deg, #101826, #1b2740, #101826);
+  overflow: hidden;
+}
+.ticker-content {
+  display: flex;
+  animation: ticker 26s linear infinite;
+  white-space: nowrap;
+}
+.ticker-content:hover {
+  animation-play-state: paused;
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Animated phone / contact pulse ── */
+.pulse-cta {
+  animation: pulseGlow 2.1s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 165, 36, 0.45); }
+  50% { box-shadow: 0 0 0 8px rgba(245, 165, 36, 0); }
+}
+
+/* ── Hero form glass card ── */
+.quote-card {
+  background: rgba(16, 24, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1.25rem;
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .quote-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
+
+/* ── Floating buttons ── */
+.float-btn {
+  animation: pulseHelp 1.9s infinite;
+}
+@keyframes pulseHelp {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(245, 165, 36, 0.5);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 12px rgba(245, 165, 36, 0);
+  }
+}
+
+/* ── Footer links ── */
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #cbd5e1;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.footer-link:hover {
+  color: var(--color-amber);
+  padding-left: 4px;
+}
+
+/* ── Social icon circles ── */
+.social-circle {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 165, 36, 0.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  transition: all 0.3s ease;
+}
+.social-circle:hover {
+  background: var(--color-amber);
+  border-color: var(--color-amber);
+  color: #101826;
+}
+
+/* ── Contact info rows ── */
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+}
+.info-row:hover {
+  color: white;
+}
+.info-row:last-child {
+  border-bottom: none;
+}
+
+/* ── Nav dot prefix (desktop only) ── */
+@media (min-width: 1024px) {
+  .nav-dot::before {
+    content: '● ';
+    font-size: 0.5em;
+    color: var(--color-amber);
+    vertical-align: middle;
+  }
+}
+
+/* ── Testimonial card ── */
+.review-card {
+  border: 1px solid rgba(245, 165, 36, 0.18);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  background: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 44px rgba(16, 24, 38, 0.12);
+}

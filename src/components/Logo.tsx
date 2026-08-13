@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const sizeMap = {
   sm: { height: 28, className: "h-7" },
-  md: { height: 36, className: "h-9" },
-  lg: { height: 48, className: "h-12" },
+  md: { height: 36, className: "h-9 lg:h-14" },
+  lg: { height: 48, className: "h-12 lg:h-16" },
 };
 
 export function Logo({

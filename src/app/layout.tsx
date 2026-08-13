@@ -22,6 +22,23 @@ export const metadata: Metadata = {
   },
   description:
     "Rapid Car Recovery provides fast 24 hour car recovery, towing, emergency towing, breakdown recovery, flatbed towing and accident recovery across Sharjah. خدمات سحب واسترجاع السيارات في الشارقة.",
+  openGraph: {
+    title: "Rapid Car Recovery | 24/7 Car Recovery & Towing in Sharjah",
+    description:
+      "Fast car recovery, towing, roadside assistance and accident recovery across Sharjah, available 24/7.",
+    images: [
+      {
+        url: "/images/rapid-car-recovery-open-graph.webp",
+        width: 1056,
+        height: 554,
+        alt: "Rapid Car Recovery | Car Recovery & Towing Services in Sharjah",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/rapid-car-recovery-open-graph.webp"],
+  },
 };
 
 export default function RootLayout({

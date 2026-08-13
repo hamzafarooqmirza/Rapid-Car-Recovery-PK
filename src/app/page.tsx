@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -6,23 +5,6 @@ import { Footer } from "@/components/Footer";
 import { QuoteForm } from "@/components/QuoteForm";
 import { ReviewsSlider } from "@/components/ReviewsSlider";
 import { services as allServices } from "@/lib/services";
-
-export const metadata: Metadata = {
-  openGraph: {
-    images: [
-      {
-        url: "/images/service-roadside-assistance.jpg",
-        width: 1600,
-        height: 1067,
-        alt: "Rapid Car Recovery | 24/7 Car Recovery & Towing in Sharjah",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: ["/images/service-roadside-assistance.jpg"],
-  },
-};
 
 const tickerItems = [
   { icon: "fa-solid fa-truck-pickup", text: "Car Recovery Sharjah" },

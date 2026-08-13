@@ -13,7 +13,7 @@ export const services: Service[] = [
   {
     slug: "car-recovery-sharjah",
     icon: "fa-solid fa-truck-pickup",
-    img: "/images/service-car-recovery.jpg",
+    img: "/images/car-recovery-technician.jpg",
     title: "Car Recovery Sharjah",
     titleAr: "استرجاع السيارات في الشارقة",
     desc: "Fast, careful recovery for any car that can't be driven, wherever you are in Sharjah.",
@@ -81,7 +81,7 @@ export const services: Service[] = [
   {
     slug: "roadside-assistance-sharjah",
     icon: "fa-solid fa-road",
-    img: "/images/flat-battery-assistance-1448x1086.webp",
+    img: "/images/service-car-recovery.jpg",
     title: "Roadside Assistance Sharjah",
     titleAr: "المساعدة على الطريق في الشارقة",
     desc: "On-the-spot help for minor issues so you can often get back on the road without a full tow.",

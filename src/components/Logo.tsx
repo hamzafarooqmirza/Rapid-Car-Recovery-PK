@@ -1,7 +1,9 @@
+import Image from "next/image";
+
 const sizeMap = {
-  sm: { icon: "h-7 w-7 text-sm", text: "text-base" },
-  md: { icon: "h-9 w-9 text-base", text: "text-lg" },
-  lg: { icon: "h-11 w-11 text-lg", text: "text-xl" },
+  sm: { height: 28, className: "h-7" },
+  md: { height: 36, className: "h-9" },
+  lg: { height: 48, className: "h-12" },
 };
 
 export function Logo({
@@ -12,18 +14,25 @@ export function Logo({
   size?: "sm" | "md" | "lg";
 }) {
   const s = sizeMap[size];
-  const textColor = variant === "light" ? "text-white" : "text-ink";
 
-  return (
-    <span className="inline-flex items-center gap-2.5">
-      <span
-        className={`flex ${s.icon} flex-shrink-0 items-center justify-center rounded-lg bg-amber font-heading font-extrabold text-ink`}
-      >
-        <i className="fa-solid fa-truck-pickup"></i>
-      </span>
-      <span className={`font-heading font-extrabold leading-tight ${s.text} ${textColor}`}>
-        Rapid Car Recovery
-      </span>
-    </span>
+  const logo = (
+    <Image
+      src="/images/rapid-car-recovery-logo.webp"
+      alt="Rapid Car Recovery"
+      width={1303}
+      height={434}
+      priority
+      className={`w-auto ${s.className}`}
+    />
   );
+
+  if (variant === "dark") {
+    return (
+      <span className="inline-flex items-center rounded-lg bg-ink px-2.5 py-1.5">
+        {logo}
+      </span>
+    );
+  }
+
+  return logo;
 }

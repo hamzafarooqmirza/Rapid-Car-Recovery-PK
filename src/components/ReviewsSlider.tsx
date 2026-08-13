@@ -20,7 +20,7 @@ const reviews = [
   {
     name: "Yousef A.",
     quote:
-      "Battery died in Industrial Area and I expected a long wait. The team arrived quickly and got me moving again with no fuss.",
+      "Battery died in Al Ghuwair and I expected a long wait. The team arrived quickly and got me moving again with no fuss.",
   },
   {
     name: "Mariam S.",
@@ -35,7 +35,7 @@ const reviews = [
   {
     name: "Layla M.",
     quote:
-      "Stuck on the University City road late at night — they picked up on WhatsApp straight away and had a truck with me fast.",
+      "Stuck near Al Rahmaniya late at night — they picked up on WhatsApp straight away and had a truck with me fast.",
   },
 ];
 

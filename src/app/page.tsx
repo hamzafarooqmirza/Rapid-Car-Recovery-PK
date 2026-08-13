@@ -1,26 +1,10 @@
-import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { QuoteForm } from "@/components/QuoteForm";
 import { ReviewsSlider } from "@/components/ReviewsSlider";
-
-export const metadata: Metadata = {
-  openGraph: {
-    images: [
-      {
-        url: "/images/service-roadside-assistance.jpg",
-        width: 1600,
-        height: 1067,
-        alt: "Rapid Car Recovery | 24/7 Car Recovery & Towing in Sharjah",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: ["/images/service-roadside-assistance.jpg"],
-  },
-};
+import { services as allServices } from "@/lib/services";
 
 const tickerItems = [
   { icon: "fa-solid fa-truck-pickup", text: "Car Recovery Sharjah" },
@@ -42,44 +26,17 @@ const strip = [
   { icon: "fa-solid fa-headset", label: "24/7 Support", labelAr: "دعم على مدار الساعة" },
 ];
 
-const services = [
-  {
-    img: "/images/service-car-recovery.jpg",
-    title: "Car Recovery Sharjah",
-    titleAr: "استرجاع السيارات في الشارقة",
-    desc: "Fast, careful recovery for any car that can't be driven, wherever you are in Sharjah.",
-  },
-  {
-    img: "/images/service-towing.jpg",
-    title: "Towing Service Sharjah",
-    titleAr: "خدمة سحب السيارات في الشارقة",
-    desc: "Reliable towing to your garage, home or preferred location, handled with care from hook-up to drop-off.",
-  },
-  {
-    img: "/images/service-24hr.png",
-    title: "24 Hour Car Recovery Sharjah",
-    titleAr: "استرجاع سيارات على مدار 24 ساعة",
-    desc: "Day or night, our team is on call around the clock to reach drivers stuck anywhere in the city.",
-  },
-  {
-    img: "/images/service-emergency-towing.jpg",
-    title: "Emergency Towing Sharjah",
-    titleAr: "سحب طوارئ في الشارقة",
-    desc: "Rapid response towing for urgent situations, so you're not left waiting on a busy or unsafe road.",
-  },
-  {
-    img: "/images/service-roadside-assistance.jpg",
-    title: "Roadside Assistance Sharjah",
-    titleAr: "المساعدة على الطريق في الشارقة",
-    desc: "On-the-spot help for minor issues so you can often get back on the road without a full tow.",
-  },
-  {
-    img: "/images/service-accident-recovery.jpg",
-    title: "Accident Recovery Sharjah",
-    titleAr: "استرجاع سيارات الحوادث في الشارقة",
-    desc: "Considerate, professional recovery from the scene of a collision, with support for the paperwork after.",
-  },
+const featuredSlugs = [
+  "car-recovery-sharjah",
+  "towing-service-sharjah",
+  "24-hour-car-recovery-sharjah",
+  "emergency-towing-sharjah",
+  "roadside-assistance-sharjah",
+  "accident-recovery-sharjah",
 ];
+const services = featuredSlugs
+  .map((slug) => allServices.find((s) => s.slug === slug))
+  .filter((s): s is (typeof allServices)[number] => Boolean(s));
 
 const whyChoose = [
   {
@@ -100,8 +57,10 @@ const whyChoose = [
 ];
 
 const areas = [
-  "Al Nahda", "Al Majaz", "Al Qasimia", "Industrial Area",
-  "University City", "Muwaileh", "Al Taawun", "Sharjah Airport Road",
+  "Al Nahda", "Al Majaz", "Al Qasimia", "Al Qasba", "Al Taawun", "Al Khan",
+  "Al Mamzar", "Al Yarmook", "Al Ghuwair", "Al Nabba", "Al Qulayaah", "Al Jazzat",
+  "Al Goaz", "Al Ramla", "Al Fayha", "Al Ghafia", "Al Rahmaniya", "Muwaileh",
+  "Al Saja'a", "Al Juraina",
 ];
 
 const SHARJAH_MAP_SRC = "https://www.google.com/maps?q=Sharjah,+United+Arab+Emirates&output=embed";
@@ -273,16 +232,20 @@ export default function Home() {
             </div>
             <div className="mt-9 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
               {services.map((service) => (
-                <article key={service.title} className="svc-card-dark reveal flex flex-col">
-                  <Image
-                    src={service.img}
-                    alt={service.title}
-                    width={900}
-                    height={600}
-                    className="h-52 w-full rounded-t-[1.25rem] object-cover"
-                  />
+                <article key={service.slug} className="svc-card-dark reveal flex flex-col">
+                  <Link href={`/services/${service.slug}`}>
+                    <Image
+                      src={service.img}
+                      alt={service.title}
+                      width={900}
+                      height={600}
+                      className="h-52 w-full rounded-t-[1.25rem] object-cover"
+                    />
+                  </Link>
                   <div className="flex flex-1 flex-col p-6">
-                    <h3 className="mb-1 text-xl font-bold text-white">{service.title}</h3>
+                    <Link href={`/services/${service.slug}`} className="mb-1 text-xl font-bold text-white transition hover:text-amber">
+                      {service.title}
+                    </Link>
                     <p className="ar mb-2 text-sm text-slate-400">{service.titleAr}</p>
                     <p className="mb-5 flex-1 text-slate-400">{service.desc}</p>
                     <div className="mt-auto flex gap-3">
@@ -306,9 +269,9 @@ export default function Home() {
               ))}
             </div>
             <div className="reveal mt-10 text-center">
-              <a href="/services" className="inline-block rounded-full border-2 border-amber px-8 py-4 font-bold text-amber transition hover:bg-amber hover:text-ink">
+              <Link href="/services" className="inline-block rounded-full border-2 border-amber px-8 py-4 font-bold text-amber transition hover:bg-amber hover:text-ink">
                 View All Services <i className="fa-solid fa-arrow-right ml-2"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

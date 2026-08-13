@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Logo } from "./Logo";
+import { services } from "@/lib/services";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/areas", label: "Coverage" },
   { href: "/contact", label: "Contact" },
@@ -14,6 +14,8 @@ const navLinks = [
 
 export function Header({ activePath = "/" }: { activePath?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const isServicesActive = activePath === "/services" || activePath.startsWith("/services/");
 
   return (
     <>
@@ -35,7 +37,52 @@ export function Header({ activePath = "/" }: { activePath?: string }) {
           </Link>
 
           <nav className="hidden items-center gap-7 text-sm font-semibold lg:flex">
-            {navLinks.map((link) => (
+            <Link
+              href="/"
+              className={
+                "/" === activePath ? "nav-dot text-amber" : "nav-dot text-white/85 transition hover:text-amber"
+              }
+            >
+              Home
+            </Link>
+
+            {/* Services dropdown */}
+            <div className="group relative">
+              <Link
+                href="/services"
+                className={
+                  (isServicesActive ? "nav-dot text-amber" : "nav-dot text-white/85 transition hover:text-amber") +
+                  " inline-flex items-center gap-1.5"
+                }
+              >
+                Services <i className="fa-solid fa-chevron-down text-[10px]"></i>
+              </Link>
+              <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                <div className="rounded-2xl border border-amber/20 bg-ink p-3 shadow-2xl">
+                  <ul className="grid gap-1">
+                    {services.map((service) => (
+                      <li key={service.slug}>
+                        <a
+                          href={`/services/${service.slug}`}
+                          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-white/85 transition hover:bg-amber/10 hover:text-amber"
+                        >
+                          <i className={`${service.icon} w-4 text-xs text-amber`}></i>
+                          {service.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/services"
+                    className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-amber/10 px-3 py-2 text-sm font-bold text-amber transition hover:bg-amber hover:text-ink"
+                  >
+                    View All Services <i className="fa-solid fa-arrow-right text-xs"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {navLinks.slice(1).map((link) => (
               <a
                 key={link.label}
                 href={link.href}
@@ -79,7 +126,50 @@ export function Header({ activePath = "/" }: { activePath?: string }) {
         {isMenuOpen && (
           <div className="border-t border-white/10 bg-ink lg:hidden">
             <div className="wrap grid gap-3 py-4 font-semibold">
-              {navLinks.map((link) => (
+              <Link
+                href="/"
+                className={"/" === activePath ? "py-2 text-amber" : "py-2 text-white/85 hover:text-amber"}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <i className="fa-solid fa-chevron-right mr-2 text-xs text-amber"></i>Home
+              </Link>
+
+              {/* Mobile Services accordion */}
+              <div>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href="/services"
+                    className={isServicesActive ? "py-2 text-amber" : "py-2 text-white/85 hover:text-amber"}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <i className="fa-solid fa-chevron-right mr-2 text-xs text-amber"></i>Services
+                  </Link>
+                  <button
+                    aria-label="Toggle services list"
+                    className="px-2 py-2 text-white/70"
+                    onClick={() => setIsMobileServicesOpen((open) => !open)}
+                  >
+                    <i className={`fa-solid ${isMobileServicesOpen ? "fa-chevron-up" : "fa-chevron-down"} text-xs`}></i>
+                  </button>
+                </div>
+                {isMobileServicesOpen && (
+                  <ul className="mb-2 ml-5 grid gap-1 border-l border-white/10 pl-4">
+                    {services.map((service) => (
+                      <li key={service.slug}>
+                        <a
+                          href={`/services/${service.slug}`}
+                          className="block py-1.5 text-sm font-medium text-white/70 hover:text-amber"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {service.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+              {navLinks.slice(1).map((link) => (
                 <a
                   key={link.label}
                   href={link.href}

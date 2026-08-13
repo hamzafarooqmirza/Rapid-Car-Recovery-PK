@@ -30,7 +30,7 @@ export const services: Service[] = [
   {
     slug: "towing-service-sharjah",
     icon: "fa-solid fa-truck-ramp-box",
-    img: "/images/service-towing.jpg",
+    img: "/images/breakdown-recovery-blue-sedan-on-highway-tow-ramp-1448x1086.webp",
     title: "Towing Service Sharjah",
     titleAr: "خدمة سحب السيارات في الشارقة",
     desc: "Reliable towing to your garage, home or preferred location, handled with care from hook-up to drop-off.",
@@ -47,7 +47,7 @@ export const services: Service[] = [
   {
     slug: "24-hour-car-recovery-sharjah",
     icon: "fa-solid fa-clock",
-    img: "/images/service-24hr.png",
+    img: "/images/wrong-fuel-recovery-1672x941.webp",
     title: "24 Hour Car Recovery Sharjah",
     titleAr: "استرجاع سيارات على مدار 24 ساعة",
     desc: "Day or night, our team is on call around the clock to reach drivers stuck anywhere in the city.",
@@ -64,7 +64,7 @@ export const services: Service[] = [
   {
     slug: "emergency-towing-sharjah",
     icon: "fa-solid fa-triangle-exclamation",
-    img: "/images/service-emergency-towing.jpg",
+    img: "/images/car-towing-highway-recovery-with-blue-hatchback-1459x1078.webp",
     title: "Emergency Towing Sharjah",
     titleAr: "سحب طوارئ في الشارقة",
     desc: "Rapid response towing for urgent situations, so you're not left waiting on a busy or unsafe road.",
@@ -81,7 +81,7 @@ export const services: Service[] = [
   {
     slug: "roadside-assistance-sharjah",
     icon: "fa-solid fa-road",
-    img: "/images/service-roadside-assistance.jpg",
+    img: "/images/flat-battery-assistance-1448x1086.webp",
     title: "Roadside Assistance Sharjah",
     titleAr: "المساعدة على الطريق في الشارقة",
     desc: "On-the-spot help for minor issues so you can often get back on the road without a full tow.",
@@ -98,7 +98,7 @@ export const services: Service[] = [
   {
     slug: "breakdown-recovery-sharjah",
     icon: "fa-solid fa-car-burst",
-    img: "/images/service-breakdown-recovery.jpg",
+    img: "/images/breakdown-recovery-for-birmingham-website-1448x1086.webp",
     title: "Breakdown Recovery Sharjah",
     titleAr: "استرجاع سيارات الأعطال في الشارقة",
     desc: "Whatever's stopped your car — engine trouble, a flat tyre or an electrical fault — we'll get it moved safely.",
@@ -115,7 +115,7 @@ export const services: Service[] = [
   {
     slug: "flatbed-towing-sharjah",
     icon: "fa-solid fa-trailer",
-    img: "/images/service-flatbed-towing.jpg",
+    img: "/images/vehicle-transport-1535x1024.webp",
     title: "Flatbed Towing Sharjah",
     titleAr: "سحب بشاحنة مسطحة في الشارقة",
     desc: "Flatbed transport that keeps all four wheels off the road, ideal for low cars, 4x4s and damaged vehicles.",
@@ -132,7 +132,7 @@ export const services: Service[] = [
   {
     slug: "accident-recovery-sharjah",
     icon: "fa-solid fa-car-side",
-    img: "/images/service-accident-recovery.jpg",
+    img: "/images/wrecked-blue-sedan-by-the-roadside-1536x1024.webp",
     title: "Accident Recovery Sharjah",
     titleAr: "استرجاع سيارات الحوادث في الشارقة",
     desc: "Considerate, professional recovery from the scene of a collision, with support for the paperwork after.",
@@ -149,7 +149,7 @@ export const services: Service[] = [
   {
     slug: "vehicle-towing-sharjah",
     icon: "fa-solid fa-truck",
-    img: "/images/service-vehicle-towing.jpg",
+    img: "/images/van-recovery-service-1448x1086.webp",
     title: "Vehicle Towing Sharjah",
     titleAr: "سحب المركبات في الشارقة",
     desc: "General vehicle towing for cars, vans and light commercial vehicles anywhere across Sharjah.",

@@ -254,7 +254,7 @@ export default function AreasPage() {
             </div>
             <div className="reveal">
               <Image
-                src="/images/service-vehicle-towing.jpg"
+                src="/images/car-towing-highway-recovery-with-blue-hatchback-1459x1078.webp"
                 alt="Rapid Car Recovery vehicle attending a call in Sharjah"
                 width={2000}
                 height={1333}

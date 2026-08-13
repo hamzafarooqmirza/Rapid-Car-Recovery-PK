@@ -100,8 +100,10 @@ const whyChoose = [
 ];
 
 const areas = [
-  "Al Nahda", "Al Majaz", "Al Qasimia", "Industrial Area",
-  "University City", "Muwaileh", "Al Taawun", "Sharjah Airport Road",
+  "Al Nahda", "Al Majaz", "Al Qasimia", "Al Qasba", "Al Taawun", "Al Khan",
+  "Al Mamzar", "Al Yarmook", "Al Ghuwair", "Al Nabba", "Al Qulayaah", "Al Jazzat",
+  "Al Goaz", "Al Ramla", "Al Fayha", "Al Ghafia", "Al Rahmaniya", "Muwaileh",
+  "Al Saja'a", "Al Juraina",
 ];
 
 const SHARJAH_MAP_SRC = "https://www.google.com/maps?q=Sharjah,+United+Arab+Emirates&output=embed";

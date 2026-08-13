@@ -186,7 +186,12 @@ export default function ContactPage() {
                   <i className="fa-solid fa-map-location-dot text-amber-dark"></i> Areas We Cover
                 </h3>
                 <div className="flex flex-wrap gap-2 text-sm">
-                  {["Al Nahda", "Al Majaz", "Al Qasimia", "Industrial Area", "University City", "Muwaileh"].map((area) => (
+                  {[
+                    "Al Nahda", "Al Majaz", "Al Qasimia", "Al Qasba", "Al Taawun", "Al Khan",
+                    "Al Mamzar", "Al Yarmook", "Al Ghuwair", "Al Nabba", "Al Qulayaah", "Al Jazzat",
+                    "Al Goaz", "Al Ramla", "Al Fayha", "Al Ghafia", "Al Rahmaniya", "Muwaileh",
+                    "Al Saja'a", "Al Juraina",
+                  ].map((area) => (
                     <span key={area} className="rounded-full border border-ink/10 bg-white px-3 py-1 font-medium text-ink/80">{area}</span>
                   ))}
                 </div>

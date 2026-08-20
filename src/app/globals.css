@@ -38,6 +38,7 @@ h4,
 .ar {
   direction: rtl;
   font-family: "Tahoma", var(--font-inter), Arial, sans-serif;
+  color: var(--color-amber-dark);
 }
 
 /* ── Buttons ── */
